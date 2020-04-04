@@ -10,6 +10,8 @@ from bs4 import BeautifulSoup
 import urllib.parse
 from datetime import datetime
 from multiprocessing import Pool
+
+
 def main():
     print('Getting staff urls ...')
 
@@ -29,9 +31,11 @@ def main():
     
     print('Staff emails found:')    
     
-    if __name__ == '__main__' :
-        mypool = Pool()
-        mypool.map(print_details, urls)
+
+    mypool = Pool()
+    mypool.map(print_details, urls)
+
+
 
 def fix_encoding(url):
      components = urllib.parse.urlsplit(url)
@@ -63,5 +67,5 @@ def get_details(url):
         
     return header.get_text() +' (no email found)'
 
-
-main()
+if __name__ == '__main__' :
+    main()
